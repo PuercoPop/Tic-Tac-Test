@@ -20,7 +20,7 @@ def sample_board(joe, mac):
     return Board(joe, mac)
 
 # Tests
-def test_move(sample_board):
+def test_move(sample_board, joe):
     board = sample_board
     move = Moves.top_right
     board.turn(move)

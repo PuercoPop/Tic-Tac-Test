@@ -19,6 +19,10 @@ class Board(object):
         """Return the cell that the move references.
         ie. Moves.top_right -> return top_right cell.
         """
+
+    def set_cell(self, move, value):
+        """ # No setfable places.Fuck Python. Can't 'assign' functions.
+        """
         raise NotImplementedError
 
     def turn(self, move):
