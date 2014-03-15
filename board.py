@@ -46,21 +46,24 @@ class Board(object):
         """Return the cell that the move references.
         ie. Moves.top_right -> return top_right cell.
         """
+        return self._board[move - 1]
 
     def set_cell(self, move, value):
         """ # No setfable places.Fuck Python. Can't 'assign' functions.
         """
-        raise NotImplementedError
+        self._board[move - 1] = value
+        return self._board[move - 1]
 
     def turn(self, move):
         """Should raise InvalidMove if move illegal. ie. claiming a non empty
         square.."""
-        raise NotImplementedError
+        self.set_cell(move, self.players.current_player.symbol)
+        self.players.next()
 
     def is_valid_move(self, move):
         """Is move Legal in game? Assume valid input.
         """
-        raise NotImplementedError
+        return " " == self.cell(move)
 
     def pre_move_message(self, ):
         raise NotImplementedError
