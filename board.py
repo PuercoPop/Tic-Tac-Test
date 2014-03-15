@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class Board(object):
+    def __init__(self, player_1, player_2):
+        """Takes both players as argument. Returns the board.
+        """
+        raise NotImplementedError
+
     def __iter__(self, ):
         raise NotImplementedError
 
