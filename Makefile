@@ -1,4 +1,4 @@
 
 
 test:
-	py.test -x tests.py
+	py.test -x test_board.py
