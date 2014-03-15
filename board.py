@@ -26,7 +26,8 @@ class Board(object):
         raise NotImplementedError
 
     def turn(self, move):
-        """Assume valid input."""
+        """Should raise InvalidMove if move illegal. ie. claiming a non empty
+        square.."""
         raise NotImplementedError
 
     def is_valid_move(self, move):
