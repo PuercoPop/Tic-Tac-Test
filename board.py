@@ -21,6 +21,7 @@ class Board(object):
     def is_valid_move(self, move):
         """Is move Legal in game? Assume valid input.
         """
+        raise NotImplementedError
 
     def pre_move_message(self, ):
         raise NotImplementedError
