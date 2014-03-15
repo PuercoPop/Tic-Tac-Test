@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from sys import stdout
 from itertools import cycle
+from moves import InvalidMove
 
 class PlayerList(object):
     """Helper to keep track of player cycling.
@@ -57,8 +58,11 @@ class Board(object):
     def turn(self, move):
         """Should raise InvalidMove if move illegal. ie. claiming a non empty
         square.."""
-        self.set_cell(move, self.players.current_player.symbol)
-        self.players.next()
+        if self.is_valid_move(move):
+            self.set_cell(move, self.players.current_player.symbol)
+            self.players.next()
+        else:
+            raise InvalidMove
 
     def is_valid_move(self, move):
         """Is move Legal in game? Assume valid input.
