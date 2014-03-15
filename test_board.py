@@ -3,7 +3,7 @@
 """
 import pytest
 from board import Board
-from moves import InvalidMove
+from moves import Moves, InvalidMove
 from player import Player
 
 # Fixtures
@@ -24,9 +24,7 @@ def test_move(sample_board):
     board = sample_board
     move = Moves.top_right
     board.turn(move)
-    # Dislike creating a cell method just for testing purposes. Removing test.
-    # assert board.cell(move) == joe.symbol
-    assert True
+    assert board.cell(move) == joe.symbol
 
 def test_moving_to_non_empty_square_is_illegal():
     with pytest.raises(InvalidMove):

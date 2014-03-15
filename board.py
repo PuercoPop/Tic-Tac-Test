@@ -15,7 +15,14 @@ class Board(object):
     def __repr__(self, ):
         return self.paint()
 
+    def cell(self, move):
+        """Return the cell that the move references.
+        ie. Moves.top_right -> return top_right cell.
+        """
+        raise NotImplementedError
+
     def turn(self, move):
+        """Assume valid input."""
         raise NotImplementedError
 
     def is_valid_move(self, move):
