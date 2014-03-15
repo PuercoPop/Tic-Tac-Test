@@ -1,11 +1,29 @@
 # -*- coding: utf-8 -*-
 from sys import stdout
+from itertools import cycle
+
+class PlayerList(object):
+    """Helper to keep track of player cycling.
+    """
+    def __init__(self, *args):
+        self._players = cycle(args)
+        self._current_player = args[0]
+
+    @property
+    def current_player(self, ):
+        return self._current_player
+
+    def next(self, ):
+        self._current_player = self._players.next()
+        return self._current_player
+
 
 class Board(object):
     def __init__(self, player_1, player_2):
         """Takes both players as argument. Returns the board.
         """
-        raise NotImplementedError
+        self.players = PlayerList(player_1, player_2, )
+        self._board = [" "] * 9
 
     def __iter__(self, ):
         raise NotImplementedError
