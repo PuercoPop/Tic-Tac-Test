@@ -47,7 +47,7 @@ def test_sample_player_1_victory(joe, mac):
     board.turn(Moves.bottom_right)
     board.turn(Moves.top_middle)
 
-    assert sample_board.winner == joe
+    assert board.winner == joe
     assert board.is_game_over == True
 
 def test_sample_player_2_victory():
