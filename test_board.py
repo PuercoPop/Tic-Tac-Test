@@ -78,3 +78,9 @@ def test_sample_tie(joe, mac):
 
     assert board.winner is None
     assert board.is_game_over == True
+
+
+def test_game_messages(sample_board):
+    sample_board.pre_move_message()
+    sample_board.print_eog_message()
+    assert True
