@@ -67,14 +67,14 @@ def test_sample_tie(joe, mac):
     board = Board(joe, mac)
 
     board.turn(Moves.top_left)
-    board.turn(Moves.center_middle)
     board.turn(Moves.bottom_right)
-    board.turn(Moves.bottom_left)
     board.turn(Moves.top_right)
+    board.turn(Moves.top_middle)
+    board.turn(Moves.center_middle)
+    board.turn(Moves.bottom_left)
+    board.turn(Moves.bottom_middle)
     board.turn(Moves.center_right)
     board.turn(Moves.center_left)
-    board.turn(Moves.bottom_middle)
-    board.turn(Moves.top_middle)
 
     assert board.winner is None
     assert board.is_game_over == True
