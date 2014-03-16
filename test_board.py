@@ -16,22 +16,22 @@ def mac():
     return Player('mac', 'X')
 
 @pytest.fixture
+def sample_move():
+    return Moves.random()
+
+@pytest.fixture
 def sample_board(joe, mac):
     return Board(joe, mac)
 
 # Tests
-def test_move(sample_board, joe):
-    board = sample_board
-    move = Moves.top_right
-    board.turn(move)
-    assert board.cell(move) == joe.symbol
+def test_move(sample_board, sample_move, joe):
+    sample_board.turn(sample_move)
+    assert sample_board.cell(move) == joe.symbol
 
-def test_moving_to_non_empty_square_is_illegal(sample_board):
+def test_moving_to_non_empty_square_is_illegal(sample_board, sample_move):
     with pytest.raises(InvalidMove):
-        board = sample_board
-        move = Moves.top_left
-        board.turn(move)
-        board.turn(move)
+        sample_board.turn(sample_move)
+        sample_board.turn(sample_move)
 
 def test_moving_switches_player(sample_board, sample_move):
     first_player = sample_board.current_player

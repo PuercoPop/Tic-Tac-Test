@@ -18,5 +18,6 @@ class Moves(object):
 
     @classmethod
     def random(cls):
-        return choice([move for move in dir(cls)
+        return choice([getattr(cls, move)
+                       for move in dir(cls)
                        if not(move[:2] == "__"  == move[-2:]) ])
