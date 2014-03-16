@@ -13,7 +13,7 @@ class PlayerList(object):
         # player symbols to player object to be able to look a player by
         # symbol.
         self._from_symbols = dict()
-        for player in  args:
+        for player in args:
             self._from_symbols[player.symbol] = player
 
     @property
@@ -92,8 +92,9 @@ class Board(object):
         return self._players.current_player
 
     @property
-    def is_game_over(self, move):
-        raise NotImplementedError
+    def is_game_over(self, ):
+        return (self.winner is not None  or
+                len([cell for cell in self._board if cell == " "]) == 0)
 
     @property
     def winner(self, ):
