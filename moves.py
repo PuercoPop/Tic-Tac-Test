@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import choice
 
 class InvalidMove(Exception):
     pass
@@ -14,3 +15,8 @@ class Moves(object):
     bottom_right = 7
     bottom_middle = 8
     bottom_left = 9
+
+    @classmethod
+    def random(cls):
+        return choice([move for move in dir(cls)
+                       if not(move[:2] == "__"  == move[-2:]) ])
