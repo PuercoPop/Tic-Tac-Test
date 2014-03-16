@@ -80,10 +80,14 @@ class Board(object):
         return " " == self.cell(move)
 
     def pre_move_message(self, ):
-        raise NotImplementedError
+        return "{name} make your move".format(name=self.current_player.name)
 
-    def end_of_game_message(self, move):
-        raise NotImplementedError
+    def end_of_game_message(self, ):
+        if self.winner:
+            return "Congratulations {name}, You Won!".format(
+                name=self.winner.name)
+        else:
+            return "As expected, game was tie. *yawn*"
 
     @property
     def current_player(self, ):
