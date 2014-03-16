@@ -38,11 +38,43 @@ def test_moving_switches_player(sample_board, sample_move):
     sample_board.move(sample_move)
     assert first_player != sample_board.current_player
 
-def test_sample_player_1_victory():
-    assert False
+def test_sample_player_1_victory(joe, mac):
+    board = Board(joe, mac)
+
+    board.move(Moves.top_left)
+    board.move(Moves.bottom_left)
+    board.move(Moves.top_right)
+    board.move(Moves.bottom_right)
+    board.move(Moves.top_middle)
+
+    assert sample_board.winner == joe
+    assert board.is_game_over == True
 
 def test_sample_player_2_victory():
-    assert False
+    board = Board(joe, mac)
+
+    board.move(Moves.bottom_left)
+    board.move(Moves.top_left)
+    board.move(Moves.bottom_right)
+    board.move(Moves.top_right)
+    board.move(Moves.center_middle)
+    board.move(Moves.top_middle)
+
+    assert board.winner == mac
+    assert board.is_game_over == True
 
 def test_sample_tie():
-    assert False
+    board = Board(joe, mac)
+
+    board.move(Moves.top_left)
+    board.move(Moves.center_middle)
+    board.move(Moves.bottom_right)
+    board.move(Moves.bottom_left)
+    board.move(Moves.top_right)
+    board.move(Moves.center_right)
+    board.move(Moves.center_left)
+    board.move(Moves.bottom_middle)
+    board.move(Moves.top_middle)
+
+    assert board.winner is None
+    assert board.is_game_over == True
