@@ -13,7 +13,7 @@ def joe():
 
 @pytest.fixture
 def mac():
-    return Player('mac', 'X')
+    return Player('mac', 'O')
 
 @pytest.fixture
 def sample_move():
