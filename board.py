@@ -41,6 +41,7 @@ class Board(object):
     def end_of_game_message(self, move):
         raise NotImplementedError
 
+    @property
     def current_player(self, ):
         """Return the current's player object.
         """
