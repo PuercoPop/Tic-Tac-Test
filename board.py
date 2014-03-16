@@ -8,7 +8,7 @@ class PlayerList(object):
     """
     def __init__(self, *args):
         self._players = cycle(args)
-        self._current_player = args[0]
+        self.next()
 
     @property
     def current_player(self, ):
@@ -60,7 +60,7 @@ class Board(object):
         square.."""
         if self.is_valid_move(move):
             self.set_cell(move, self.current_player.symbol)
-            self.players.next()
+            self._players.next()
         else:
             raise InvalidMove
 
@@ -79,7 +79,7 @@ class Board(object):
     def current_player(self, ):
         """Return the current's player object.
         """
-        self._players.current_player
+        return self._players.current_player
 
     @property
     def is_game_over(self, move):
