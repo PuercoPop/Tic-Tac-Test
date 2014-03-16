@@ -50,7 +50,7 @@ def test_sample_player_1_victory(joe, mac):
     assert board.winner == joe
     assert board.is_game_over == True
 
-def test_sample_player_2_victory():
+def test_sample_player_2_victory(joe, mac):
     board = Board(joe, mac)
 
     board.turn(Moves.bottom_left)
@@ -63,7 +63,7 @@ def test_sample_player_2_victory():
     assert board.winner == mac
     assert board.is_game_over == True
 
-def test_sample_tie():
+def test_sample_tie(joe, mac):
     board = Board(joe, mac)
 
     board.turn(Moves.top_left)
