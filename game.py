@@ -11,12 +11,12 @@ if __name__ == "__main__":
     board = Board(player_1, player_2)
 
     # Main Loop
-    while not board.is_game_over():
+    while not board.is_game_over:
         board.paint()
         print board.pre_move_message()
 
         try:
-            move = board.get_current_player().move()
+            move = board.current_player.move(board)
             board.is_valid_move(move)
         except InvalidMove:
             continue
