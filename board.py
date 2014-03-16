@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from sys import stdout
 from itertools import cycle
-from moves import InvalidMove
+from moves import Moves, InvalidMove
 
 class PlayerList(object):
     """Helper to keep track of player cycling.
@@ -99,4 +99,21 @@ class Board(object):
     def winner(self, ):
         """Return the game's winner, None if no winner.
         """
-        raise NotImplementedError
+        if self.cell(Moves.top_right) == self.cell(Moves.top_middle) == self.cell(Moves.top_left):
+            return self._players.player_from_symbol(self.cell(Moves.top_right))
+        elif self.cell(Moves.center_right) == self.cell(Moves.center_middle) == self.cell(Moves.center_left):
+            return self._players.player_from_symbol(self.cell(Moves.center_left))
+        elif self.cell(Moves.bottom_right) == self.cell(Moves.bottom_middle) == self.cell(Moves.bottom_left):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_left))
+        elif self.cell(Moves.top_right) == self.cell(Moves.center_right) == self.cell(Moves.bottom_right):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_right))
+        elif self.cell(Moves.top_middle) == self.cell(Moves.center_middle) == self.cell(Moves.bottom_middle):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_middle))
+        elif self.cell(Moves.top_left) == self.cell(Moves.center_left) == self.cell(Moves.bottom_left):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_left))
+        elif self.cell(Moves.top_right) == self.cell(Moves.center_middle) == self.cell(Moves.bottom_left):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_left))
+        elif self.cell(Moves.top_left) == self.cell(Moves.center_middle) == self.cell(Moves.bottom_right):
+            return self._players.player_from_symbol(self.cell(Moves.bottom_right))
+        else:
+            return None
