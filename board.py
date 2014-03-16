@@ -47,9 +47,11 @@ class Board(object):
         """
         raise NotImplementedError
 
+    @property
     def is_game_over(self, move):
         raise NotImplementedError
 
+    @property
     def winner(self, ):
         """Return the game's winner, None if no winner.
         """
