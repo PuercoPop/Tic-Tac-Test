@@ -16,8 +16,24 @@ class Moves(object):
     bottom_middle = 8
     bottom_left = 9
 
+    def __iter__(self, ):
+        """Nom nom boilerplate.
+        """
+        return self
+
+    def next(self, ):
+        for move in Moves.all():
+            yield move
+        else:
+            raise StopIteration
+
     @classmethod
-    def random(cls):
-        return choice([getattr(cls, move)
-                       for move in dir(cls)
-                       if not(move[:2] == "__"  == move[-2:]) ])
+    def random(cls, ):
+        return choice(cls.all())
+
+    @classmethod
+    def all(cls, ):
+        return filter( lambda x: x not in [cls.all, cls.random, cls.next],
+                       [getattr(cls, move)
+                        for move in dir(cls)
+                        if not(move[:2] == "__"  == move[-2:]) ])
