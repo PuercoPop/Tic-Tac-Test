@@ -9,6 +9,12 @@ class PlayerList(object):
     def __init__(self, *args):
         self._players = cycle(args)
         self.next()
+        # Because one can't use list comprehension of cycles, save a dict from
+        # player symbols to player object to be able to look a player by
+        # symbol.
+        self._from_symbols = dict()
+        for player in  args:
+            self._from_symbols[player.symbol] = player
 
     @property
     def current_player(self, ):
@@ -17,6 +23,10 @@ class PlayerList(object):
     def next(self, ):
         self._current_player = self._players.next()
         return self._current_player
+
+    def player_from_symbol(self, symbol):
+        # Explicit better than implicit ;)
+        return self._from_symbols.get(symbol, None)
 
 
 class Board(object):
