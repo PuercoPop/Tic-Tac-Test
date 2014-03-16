@@ -23,7 +23,7 @@ class Board(object):
     def __init__(self, player_1, player_2):
         """Takes both players as argument. Returns the board.
         """
-        self.players = PlayerList(player_1, player_2, )
+        self._players = PlayerList(player_1, player_2, )
         self._board = [" "] * 9
 
     def __iter__(self, ):
@@ -59,7 +59,7 @@ class Board(object):
         """Should raise InvalidMove if move illegal. ie. claiming a non empty
         square.."""
         if self.is_valid_move(move):
-            self.set_cell(move, self.players.current_player.symbol)
+            self.set_cell(move, self.current_player.symbol)
             self.players.next()
         else:
             raise InvalidMove
@@ -79,7 +79,7 @@ class Board(object):
     def current_player(self, ):
         """Return the current's player object.
         """
-        raise NotImplementedError
+        self._players.current_player
 
     @property
     def is_game_over(self, move):
