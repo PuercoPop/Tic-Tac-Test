@@ -26,7 +26,7 @@ def sample_board(joe, mac):
 # Tests
 def test_move(sample_board, sample_move, joe):
     sample_board.turn(sample_move)
-    assert sample_board.cell(move) == joe.symbol
+    assert sample_board.cell(sample_move) == joe.symbol
 
 def test_moving_to_non_empty_square_is_illegal(sample_board, sample_move):
     with pytest.raises(InvalidMove):
