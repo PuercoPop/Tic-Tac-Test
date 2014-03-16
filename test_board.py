@@ -33,8 +33,10 @@ def test_moving_to_non_empty_square_is_illegal(sample_board):
         board.turn(move)
         board.turn(move)
 
-def test_moving_switches_player():
-    assert False
+def test_moving_switches_player(sample_board, sample_move):
+    first_player = sample_board.current_player
+    sample_board.move(sample_move)
+    assert first_player != sample_board.current_player
 
 def test_sample_player_1_victory():
     assert False
