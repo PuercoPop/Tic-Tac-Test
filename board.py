@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from sys import stdout
 
 class Board(object):
     def __init__(self, player_1, player_2):
@@ -10,7 +11,15 @@ class Board(object):
         raise NotImplementedError
 
     def paint(self, ):
-        raise NotImplementedError
+        print "-------------"
+        for index, cell in enumerate(self._board): # TODO: enum on self
+            if index % 3 == 0:
+                stdout.write("| {cell} |".format(cell=cell))
+            elif index % 3 == 1:
+                stdout.write(" {cell} |".format(cell=cell))
+            elif index % 3 == 2:
+                print " {cell} |".format(cell=cell)
+                print "-------------"
 
     def __repr__(self, ):
         return self.paint()
